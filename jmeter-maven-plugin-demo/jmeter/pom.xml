@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>jmeter</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <!-- https://github.com/jmeter-maven-plugin/jmeter-maven-plugin -->
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <!-- Generate JMeter configuration -->
+                    <execution>
+                        <id>configuration</id>
+                        <goals>
+                            <goal>configure</goal>
+                        </goals>
+                    </execution>
+                    <!-- Run JMeter tests -->
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                    <!-- Fail build on errors in test -->
+                    <execution>
+                        <id>jmeter-check-results</id>
+                        <goals>
+                            <goal>results</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testPlanLibraries>
+                        <artifact>org.example:test-code:1.0-SNAPSHOT</artifact>
+                        <artifact>kg.apc:jmeter-plugins-cmn-jmeter:0.7</artifact>
+                    </testPlanLibraries>
+                    <jmeterExtensions>
+                        <artifact>kg.apc:jmeter-plugins-perfmon:2.1</artifact>
+                    </jmeterExtensions>
+                    <!-- 生成的报告，在 target/jmeter/reports -->
+                    <generateReports>true</generateReports>
+                    <errorRateThresholdInPercent>100</errorRateThresholdInPercent>
+                    <propertiesJMeter>
+                        <language>en-US</language>
+                        <jmeter.reportgenerator.overall_granularity>1000</jmeter.reportgenerator.overall_granularity>
+                    </propertiesJMeter>
+                    <!-- 指定执行 mvn verify 运行时，使用的测试计划 -->
+                    <testFilesIncluded>
+                        <jMeterTestFile>test.jmx</jMeterTestFile>
+                    </testFilesIncluded>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
