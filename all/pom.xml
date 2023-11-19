@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>revision-demo</artifactId>
-    <version>${revision}</version>
+    <artifactId>all</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -18,7 +18,11 @@
     </properties>
 
     <modules>
-        <module>module-a</module>
+        <module>../revision-example</module>
+        <module>../maven-shade-plugin-example/executable-jar</module>
+        <module>../maven-shade-plugin-example/selecting-contents-for-uber-jar</module>
+        <module>../flatten-maven-plugin-example/simple-project</module>
+        <module>../jmeter-maven-plugin-example</module>
     </modules>
 
 </project>
