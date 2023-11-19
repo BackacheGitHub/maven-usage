@@ -41,9 +41,12 @@
                 <configuration>
                     <testPlanLibraries>
                         <artifact>org.example:test-code:1.0-SNAPSHOT</artifact>
+                        <!-- 启用JMeter插件管理 https://jmeter-plugins.org/install/Install/ -->
                         <artifact>kg.apc:jmeter-plugins-cmn-jmeter:0.7</artifact>
                     </testPlanLibraries>
                     <jmeterExtensions>
+                        <!-- 监控服务器性能指标 https://jmeter-plugins.org/wiki/PerfMon/ -->
+                        <!-- 需要安装服务端agent https://github.com/undera/perfmon-agent/blob/master/README.md -->
                         <artifact>kg.apc:jmeter-plugins-perfmon:2.1</artifact>
                     </jmeterExtensions>
                     <!-- 生成的报告，在 target/jmeter/reports -->
