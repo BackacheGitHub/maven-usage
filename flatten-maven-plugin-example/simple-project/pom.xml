@@ -22,6 +22,7 @@
                 <artifactId>flatten-maven-plugin</artifactId>
                 <!--<version>1.5.0</version>-->
                 <configuration>
+                    <updatePomFile>true</updatePomFile>
                 </configuration>
                 <executions>
                     <execution>
@@ -46,11 +47,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
